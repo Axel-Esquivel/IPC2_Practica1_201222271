@@ -1,8 +1,8 @@
 class Nodo:
-    siguiente: None
+    __siguiente: None
     
     def set_siguiente(self, siguiente):
-        self.siguiente = siguiente
+        self.__siguiente = siguiente
         
     def get_siguiente(self):
-        return self.siguiente
+        return self.__siguiente

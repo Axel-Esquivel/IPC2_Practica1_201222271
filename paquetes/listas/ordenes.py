@@ -19,7 +19,7 @@ class Ordenes:
     
         return self.__conteo
         
-    def agregar(self, orden: Orden) -> Orden:
+    def encolar(self, orden: Orden) -> Orden:
         self.__temporal = self.__puntero
         
         while self.__temporal.get_siguiente() != None:
@@ -30,7 +30,10 @@ class Ordenes:
         nuevo_nodo.set_orden(orden)
         self.__temporal.set_siguiente(nuevo_nodo)
         return orden
-        
+    
+    def desencolar(self) -> Orden:
+        return self.eliminar_indice(0)
+    
     def eliminar_indice(self, indice: int) -> Orden:
         self.__temporal = self.__puntero
         

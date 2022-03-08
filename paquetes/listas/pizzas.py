@@ -1,14 +1,23 @@
-from .listas import Listas
 from ..modelos.pizza import Pizza
 from ..modelos.nodo_pizza import NodoPizza
 
-class Pizzas(Listas):
+class Pizzas:
+    __conteo: int = None
     __puntero: NodoPizza = None
     __temporal: NodoPizza = None
     
     def __init__(self):
-        super()
+        self.__conteo = 0
         self.__puntero = NodoPizza()
+        
+    def __iter__(self):
+        self.__temporal = self.__puntero
+        
+        while self.__temporal:
+            if self.__temporal.get_pizza() != None: yield self.__temporal.get_pizza()
+            self.__temporal = self.__temporal.get_siguiente()
+    
+        return self.__conteo
         
     def agregar(self, pizza: Pizza) -> Pizza:
         self.__temporal = self.__puntero
@@ -57,3 +66,6 @@ class Pizzas(Listas):
         
         if indice_recorrido == indice and self.__temporal != None:
             return self.__temporal.get_pizza()
+        
+    def contar(self):
+        return self.__conteo

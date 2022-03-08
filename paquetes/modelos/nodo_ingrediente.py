@@ -4,6 +4,9 @@ from .ingrediente import Ingrediente
 class NodoIngrediente(Nodo):
     __valor: Ingrediente = None
     
+    def __init__(self):
+        super()
+    
     def set_siguiente(self, siguiente):
         super().set_siguiente(siguiente)
     

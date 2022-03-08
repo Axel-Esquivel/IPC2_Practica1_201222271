@@ -6,8 +6,8 @@ class MenuPrincipal:
         
         while salir == False:
             print('-'*20 + 'MENU PRINCIPAL' + '-'*20)
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Crear_Ingrediente.value, OpcionesMenuPrincipal.Crear_Ingrediente.name))
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Salir.value, OpcionesMenuPrincipal.Salir.name))
+            print('{0}. {1}'.format(OpcionesMenuPrincipal.Crear_Ingrediente.value, OpcionesMenuPrincipal.Crear_Ingrediente.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OpcionesMenuPrincipal.Salir.value, OpcionesMenuPrincipal.Salir.name.replace('_', ' ')))
             
             opcion = input()
             

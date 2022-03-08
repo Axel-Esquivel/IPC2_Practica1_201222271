@@ -8,7 +8,6 @@ class Pizzas(Listas):
     
     def __init__(self):
         super()
-        self.__conteo = 0
         self.__puntero = NodoPizza()
         
     def agregar(self, pizza: Pizza) -> Pizza:
@@ -19,7 +18,7 @@ class Pizzas(Listas):
         
         self.__conteo += 1
         nuevo_nodo = NodoPizza()
-        nuevo_nodo.set_ingrediente(pizza)
+        nuevo_nodo.set_pizza(pizza)
         self.__temporal.set_siguiente(nuevo_nodo)
         return pizza
         
@@ -40,7 +39,7 @@ class Pizzas(Listas):
         self.__temporal = self.__puntero
         
         while self.__temporal.get_siguiente() != None:
-            if self.__temporal.get_siguiente() != None and self.__temporal.get_siguiente().get_ingrediente() == pizza:
+            if self.__temporal.get_siguiente() != None and self.__temporal.get_siguiente().get_pizza() == pizza:
                 self.__conteo -= 1
                 self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
             
@@ -57,7 +56,4 @@ class Pizzas(Listas):
             self.__temporal = self.__temporal.get_siguiente()
         
         if indice_recorrido == indice and self.__temporal != None:
-            return self.__temporal.get_ingrediente()
-    
-    def contar(self) -> int:
-        return self.__conteo
+            return self.__temporal.get_pizza()

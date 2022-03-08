@@ -11,7 +11,6 @@ def main():
     
     for ingrediente in ingredientes:
         print(ingrediente.get_nombre(), ingrediente.get_tiempo())
-    
 
 if __name__ == '__main__':
     main()

@@ -4,7 +4,7 @@ class Ingrediente:
     
     def __init__(self, nombre: str = None, tiempo_preparacion: int = None):
         self.set_nombre(nombre)
-        self.set_tiempo(tiempo_preparacion)
+        self.set_tiempo_preparacion(tiempo_preparacion)
     
     def set_nombre(self, nombre: str):
         self.__nombre = nombre

@@ -35,6 +35,7 @@ class MenuPrincipal:
             print('{0}. {1}'.format(OpcionesMenuPrincipal.Desarrollador.value, OpcionesMenuPrincipal.Desarrollador.name.replace('_', ' ')))
             print('{0}. {1}'.format(OpcionesMenuPrincipal.Salir.value, OpcionesMenuPrincipal.Salir.name.replace('_', ' ')))
             
+            print('Ingrese el número de la opción que desea seleccionar:')
             opcion = input()
             
             if opcion.isnumeric():

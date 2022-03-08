@@ -9,15 +9,13 @@ def main():
     ingredientes.agregar(Ingrediente('Queso', 5))
     ingredientes.agregar(Ingrediente('Piña', 2))
     
-    for ingrediente in ingredientes:
-        print(ingrediente.get_nombre(), ingrediente.get_tiempo())
-    print(ingredientes.elementos())
-    
-    ingredientes.eliminar_indice(1)
+    ingrediente = ingredientes.elemento(1)
+    print(ingrediente.get_nombre(), ingrediente.get_tiempo())
+    ingredientes.eliminar_elemento(ingrediente)
     
     for ingrediente in ingredientes:
         print(ingrediente.get_nombre(), ingrediente.get_tiempo())
-    print(ingredientes.elementos())
+    print(ingredientes.contar())
 
 if __name__ == '__main__':
     main()

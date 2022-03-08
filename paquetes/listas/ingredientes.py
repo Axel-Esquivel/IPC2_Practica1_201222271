@@ -45,16 +45,23 @@ class Ingredientes:
         self.__temporal = self.__puntero
         
         while self.__temporal.get_siguiente() != None:
-            if self.__temporal.get_siguiente() != None and self.__temporal.get_siguiente().get_ingrediente() != None:
-                
-                if self.__temporal.get_siguiente().get_ingrediente() == ingrediente:
-                    self.__temporal_siguiente = self.__temporal.get_siguiente()
-                    
-                    
+            if self.__temporal.get_siguiente() != None and self.__temporal.get_siguiente().get_ingrediente() == ingrediente:
+                self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
             
             self.__temporal = self.__temporal.get_siguiente()
-        
+            
         return ingrediente
     
-    def elementos(self) -> int:
+    def elemento(self, indice: int) -> Ingrediente:
+        self.__temporal = self.__puntero
+        
+        indice_recorrido = 0
+        while indice_recorrido != indice:
+            indice_recorrido += 1
+            self.__temporal = self.__temporal.get_siguiente()
+        
+        if indice_recorrido == indice -1 and self.__temporal != None:
+            return self.__temporal.get_ingrediente()
+    
+    def contar(self) -> int:
         return self.__conteo

@@ -8,3 +8,7 @@ class MenuIngredientes:
     
     def mostrar_menu(self):
         volver = False
+        
+        while volver == False:
+            print('-'*20 + 'MENU INGREDIENTES' + '-'*20)
+            

@@ -2,11 +2,13 @@ from ..modelos.ingrediente import Ingrediente
 from ..modelos.nodo_ingrediente import NodoIngrediente
 
 class Ingredientes:
+    __conteo: int = None
     __puntero: NodoIngrediente = None
     __temporal: NodoIngrediente = None
     __temporal_siguiente: NodoIngrediente = None
     
     def __init__(self):
+        self.__conteo = 0
         self.__puntero = NodoIngrediente()
         
     def __iter__(self):
@@ -21,7 +23,8 @@ class Ingredientes:
         
         while self.__temporal.get_siguiente() != None:
             self.__temporal = self.__temporal.get_siguiente()
-            
+        
+        self.__conteo += 1
         nuevo_nodo = NodoIngrediente()
         nuevo_nodo.set_ingrediente(ingrediente)
         self.__temporal.set_siguiente(nuevo_nodo)
@@ -52,3 +55,6 @@ class Ingredientes:
             self.__temporal = self.__temporal.get_siguiente()
         
         return ingrediente
+    
+    def elementos(self) -> int:
+        return self.__conteo

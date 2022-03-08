@@ -1,6 +1,18 @@
+from ..listas.pizzas import Pizzas
+from ..listas.ordenes import Ordenes
+from ..listas.ingredientes import Ingredientes
 from ..enums.opciones_menu_principal import OpcionesMenuPrincipal
 
 class MenuPrincipal:
+    __pizzas: Pizzas = None
+    __ordenes: Ordenes = None
+    __ingredientes: Ingredientes = None
+        
+    def __init__(self):
+        self.__pizzas = Pizzas()
+        self.__ordenes = Ordenes()
+        self.__ingredientes = Ingredientes()
+    
     def mostrar_menu(self):
         salir = False
         

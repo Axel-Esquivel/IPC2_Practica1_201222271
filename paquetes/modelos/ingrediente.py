@@ -2,6 +2,10 @@ class Ingrediente:
     __nombre: str = None
     __tiempo_preparacion: int = None
     
+    def __init__(self, nombre: str, tiempo: int):
+        self.set_nombre(nombre)
+        self.set_tiempo(tiempo)
+    
     def set_nombre(self, nombre: str):
         self.__nombre = nombre
         

@@ -9,11 +9,11 @@ class Ingrediente:
     def set_nombre(self, nombre: str):
         self.__nombre = nombre
         
-    def set_tiempo(self, tiempo_preparacion: int):
+    def set_tiempo_preparacion(self, tiempo_preparacion: int):
         self.__tiempo_preparacion = tiempo_preparacion
         
     def get_nombre(self):
         return self.__nombre
     
-    def get_tiempo(self):
+    def get_tiempo_preparacion(self):
         return self.__tiempo_preparacion

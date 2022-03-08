@@ -1,0 +1,2 @@
+class Pizzas:
+    pass

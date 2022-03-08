@@ -1,6 +1,6 @@
 class Nodo:
-    __valor: None
-    __siguiente: None
+    __valor = None
+    __siguiente = None
     
     def set_valor(self, valor):
         self.__valor = valor

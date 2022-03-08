@@ -56,7 +56,7 @@ class Ingredientes:
     def elemento(self, indice: int) -> Ingrediente:
         self.__temporal = self.__puntero
         
-        indice_recorrido = 0
+        indice_recorrido = -1
         while indice_recorrido != indice:
             indice_recorrido += 1
             self.__temporal = self.__temporal.get_siguiente()

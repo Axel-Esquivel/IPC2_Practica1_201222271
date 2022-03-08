@@ -7,13 +7,7 @@ def main():
     ingredientes.agregar(Ingrediente('Salchicha', 4))
     ingredientes.agregar(Ingrediente('Carne', 10))
     ingredientes.agregar(Ingrediente('Queso', 5))
-    ingredientes.agregar(Ingrediente('Piña', 2))
-    
-    ingredientes.eliminar_elemento(ingredientes.elemento(1))
-    
-    for ingrediente in ingredientes:
-        print(ingrediente.get_nombre(), ingrediente.get_tiempo())
-    print(ingredientes.contar())
+    ingredientes.agregar(Ingrediente('Piña', 2))        
 
 if __name__ == '__main__':
     main()

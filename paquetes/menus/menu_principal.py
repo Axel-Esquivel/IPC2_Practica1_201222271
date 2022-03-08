@@ -1,6 +1,9 @@
 from ..listas.pizzas import Pizzas
+from .menu_pizzas import MenuPizzas
 from ..listas.ordenes import Ordenes
+from .menu_ordenes import MenuOrdenes
 from ..listas.ingredientes import Ingredientes
+from .menu_ingredientes import MenuIngredientes
 from ..enums.opciones_menu_principal import OpcionesMenuPrincipal
 
 class MenuPrincipal:
@@ -26,5 +29,11 @@ class MenuPrincipal:
             opcion = input()
             
             if opcion.isnumeric():
+                if int(opcion) == int(OpcionesMenuPrincipal.Ingredientes.value):
+                    MenuIngredientes(self.__ingredientes).mostrar_menu()
+                if int(opcion) == int(OpcionesMenuPrincipal.Pizzas.value):
+                    MenuPizzas(self.__pizzas).mostrar_menu()
+                if int(opcion) == int(OpcionesMenuPrincipal.Ordenes.value):
+                    MenuOrdenes(self.__ordenes).mostrar_menu()
                 if int(opcion) == int(OpcionesMenuPrincipal.Salir.value):
                     salir = True

@@ -5,7 +5,6 @@ class Ingredientes:
     __conteo: int = None
     __puntero: NodoIngrediente = None
     __temporal: NodoIngrediente = None
-    __temporal_siguiente: NodoIngrediente = None
     
     def __init__(self):
         self.__conteo = 0
@@ -39,6 +38,7 @@ class Ingredientes:
                 self.__temporal = self.__temporal.get_siguiente()
         
         if indice_recorrido == indice -1 and self.__temporal.get_siguiente() != None:
+            self.contar -= 1
             return self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
     
     def eliminar_elemento(self, ingrediente: Ingrediente) -> Ingrediente:
@@ -46,6 +46,7 @@ class Ingredientes:
         
         while self.__temporal.get_siguiente() != None:
             if self.__temporal.get_siguiente() != None and self.__temporal.get_siguiente().get_ingrediente() == ingrediente:
+                self.contar -= 1
                 self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
             
             self.__temporal = self.__temporal.get_siguiente()

@@ -1,7 +1,6 @@
 from enum import Enum, auto
 
 class OpcionesMenuPrincipal(Enum):
-    Crear_Ingrediente = auto()
-    Crear_Pizza= auto()
-    Editar_Pizza= auto()
+    Ingredientes = auto()
+    Pizzas= auto()
     Salir= auto()

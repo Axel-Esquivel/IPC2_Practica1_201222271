@@ -7,7 +7,7 @@ def main():
     ingredientes.agregar(Ingrediente('Salchicha', 4))
     ingredientes.agregar(Ingrediente('Carne', 10))
     ingredientes.agregar(Ingrediente('Queso', 5))
-    ingredientes.agregar(Ingrediente('Piña', 2))        
+    ingredientes.agregar(Ingrediente('Piña', 2))
 
 if __name__ == '__main__':
     main()

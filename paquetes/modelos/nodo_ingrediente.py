@@ -10,5 +10,5 @@ class NodoIngrediente(Nodo):
     def set_ingrediente(self, ingrediente: Ingrediente):
         self.__valor = ingrediente
     
-    def get_ingrediente(self):
+    def get_ingrediente(self) -> Ingrediente:
         return self.__valor

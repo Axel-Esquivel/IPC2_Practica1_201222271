@@ -12,9 +12,9 @@ def main():
     ingredientes.agregar(Ingrediente('Piña', 2))
     
     pizzas = Pizzas()
-    pizzas.agregar(Pizza('Mixta pequeña', 45, 1, ingredientes))
-    pizzas.agregar(Pizza('Mixta mediana', 90, 1, ingredientes))
-    pizzas.agregar(Pizza('Mixta grande', 120, 1, ingredientes))
+    pizzas.agregar(Pizza('Mixta pequeña', 45, 4, ingredientes))
+    pizzas.agregar(Pizza('Mixta mediana', 90, 5, ingredientes))
+    pizzas.agregar(Pizza('Mixta grande', 120, 2, ingredientes))
     print(pizzas.contar())
     
     for pizza in pizzas:

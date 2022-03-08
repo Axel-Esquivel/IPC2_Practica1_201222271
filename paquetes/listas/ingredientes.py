@@ -60,7 +60,7 @@ class Ingredientes:
             indice_recorrido += 1
             self.__temporal = self.__temporal.get_siguiente()
         
-        if indice_recorrido == indice -1 and self.__temporal != None:
+        if indice_recorrido == indice and self.__temporal != None:
             return self.__temporal.get_ingrediente()
     
     def contar(self) -> int:

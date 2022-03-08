@@ -33,13 +33,13 @@ class Ingredientes:
         self.__temporal = self.__puntero
         
         indice_recorrido = 0
-        while indice_recorrido != indice:
+        while indice_recorrido != indice - 1:
             indice_recorrido += 1
             if self.__temporal.get_siguiente() != None:
                 self.__temporal = self.__temporal.get_siguiente()
         
-        if indice_recorrido - 1 == indice and self.__temporal != None:
-            return self.__temporal.get_ingrediente()
+        if indice_recorrido == indice -1 and self.__temporal.get_siguiente() != None:
+            return self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
     
     def eliminar_elemento(self, ingrediente: Ingrediente) -> Ingrediente:
         self.__temporal = self.__puntero

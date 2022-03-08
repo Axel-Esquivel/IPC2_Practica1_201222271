@@ -11,6 +11,13 @@ def main():
     
     for ingrediente in ingredientes:
         print(ingrediente.get_nombre(), ingrediente.get_tiempo())
+    print(ingredientes.elementos())
+    
+    ingredientes.eliminar_indice(1)
+    
+    for ingrediente in ingredientes:
+        print(ingrediente.get_nombre(), ingrediente.get_tiempo())
+    print(ingredientes.elementos())
 
 if __name__ == '__main__':
     main()

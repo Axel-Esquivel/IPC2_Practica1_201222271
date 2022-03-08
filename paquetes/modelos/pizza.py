@@ -6,8 +6,12 @@ class Pizza:
     __cantidad: int = None
     __ingredientes: Ingredientes = None
     
-    def __init__(self):
-        self.__ingredientes = Ingredientes()
+    def __init__(self, nombre: str = None, precio: float = None, cantidad: int = None, ingredientes: Ingredientes = None):
+        self.__nombre = nombre
+        self.__precio = precio
+        self.__cantidad = cantidad
+        self.__ingredientes = ingredientes
+        if self.__ingredientes == None: self.__ingredientes = Ingredientes()
         
     def set_nombre(self, nombre: str):
         self.__nombre = nombre

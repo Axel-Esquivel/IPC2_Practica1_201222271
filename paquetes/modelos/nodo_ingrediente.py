@@ -2,10 +2,10 @@ from .nodo import Nodo
 from .ingrediente import Ingrediente
 
 class NodoIngrediente(Nodo):
-    __ingrediente: Ingrediente
+    __valor: Ingrediente
     
     def set_ingrediente(self, ingrediente: Ingrediente):
-        self.__ingrediente = ingrediente
+        self.__valor = ingrediente
         
     def get_ingrediente(self):
-        return self.__ingrediente
+        return self.__valor

@@ -20,9 +20,9 @@ class MenuPrincipal:
     def mostrar_menu(self):
         salir = False
         mostar_desarrollador = False
-        Consola.limpiar_consola()
         
         while salir == False:
+            Consola.limpiar_consola()
             if mostar_desarrollador == True:
                 mostar_desarrollador = False
                 print('-'*20 + 'DESARROLLADOR' + '-'*20)

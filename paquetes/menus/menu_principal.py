@@ -44,7 +44,7 @@ class MenuPrincipal:
                 if int(opcion) == int(OMenuPrincipal.Ingredientes.value):
                     MenuIngredientes(self.__ingredientes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Pizzas.value):
-                    MenuPizzas(self.__pizzas).mostrar_menu()
+                    MenuPizzas(self.__pizzas, self.__ingredientes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Ordenes.value):
                     MenuOrdenes(self.__ordenes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Desarrollador.value):

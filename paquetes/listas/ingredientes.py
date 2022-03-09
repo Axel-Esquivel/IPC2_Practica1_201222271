@@ -69,11 +69,9 @@ class Ingredientes:
         
         existe = False
         while self.__temporal.get_siguiente() != None:
-            if self.__temporal.get_ingrediente() == ingrediente: existe = True
-            
             self.__temporal = self.__temporal.get_siguiente()
-        
-        
+            
+            if self.__temporal.get_ingrediente() == ingrediente: existe = True
         
         return existe
     

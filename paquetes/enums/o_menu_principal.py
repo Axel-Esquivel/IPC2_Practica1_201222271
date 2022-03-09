@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-class OpcionesMenuPrincipal(Enum):
+class OMenuPrincipal(Enum):
     Ingredientes = auto()
     Pizzas = auto()
     Ordenes = auto()

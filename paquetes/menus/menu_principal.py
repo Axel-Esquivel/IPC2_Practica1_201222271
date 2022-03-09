@@ -5,7 +5,7 @@ from .menu_ordenes import MenuOrdenes
 from ..componentes.consola import Consola
 from ..listas.ingredientes import Ingredientes
 from .menu_ingredientes import MenuIngredientes
-from ..enums.opciones_menu_principal import OpcionesMenuPrincipal
+from ..enums.o_menu_principal import OMenuPrincipal
 
 class MenuPrincipal:
     __pizzas: Pizzas = None
@@ -29,23 +29,23 @@ class MenuPrincipal:
                 print('201222271 Axel Josué Esquivel Cuy')
             
             print('-'*20 + 'MENU PRINCIPAL' + '-'*20)
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Ingredientes.value, OpcionesMenuPrincipal.Ingredientes.name.replace('_', ' ')))
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Pizzas.value, OpcionesMenuPrincipal.Pizzas.name.replace('_', ' ')))
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Ordenes.value, OpcionesMenuPrincipal.Ordenes.name.replace('_', ' ')))
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Desarrollador.value, OpcionesMenuPrincipal.Desarrollador.name.replace('_', ' ')))
-            print('{0}. {1}'.format(OpcionesMenuPrincipal.Salir.value, OpcionesMenuPrincipal.Salir.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Ingredientes.value, OMenuPrincipal.Ingredientes.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Pizzas.value, OMenuPrincipal.Pizzas.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Ordenes.value, OMenuPrincipal.Ordenes.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Desarrollador.value, OMenuPrincipal.Desarrollador.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Salir.value, OMenuPrincipal.Salir.name.replace('_', ' ')))
             
             print('Ingrese el número de la opción que desea seleccionar:')
             opcion = input()
             
             if opcion.isnumeric():
-                if int(opcion) == int(OpcionesMenuPrincipal.Ingredientes.value):
+                if int(opcion) == int(OMenuPrincipal.Ingredientes.value):
                     MenuIngredientes(self.__ingredientes).mostrar_menu()
-                elif int(opcion) == int(OpcionesMenuPrincipal.Pizzas.value):
+                elif int(opcion) == int(OMenuPrincipal.Pizzas.value):
                     MenuPizzas(self.__pizzas).mostrar_menu()
-                elif int(opcion) == int(OpcionesMenuPrincipal.Ordenes.value):
+                elif int(opcion) == int(OMenuPrincipal.Ordenes.value):
                     MenuOrdenes(self.__ordenes).mostrar_menu()
-                elif int(opcion) == int(OpcionesMenuPrincipal.Desarrollador.value):
+                elif int(opcion) == int(OMenuPrincipal.Desarrollador.value):
                     mostar_desarrollador = True
-                elif int(opcion) == int(OpcionesMenuPrincipal.Salir.value):
+                elif int(opcion) == int(OMenuPrincipal.Salir.value):
                     salir = True

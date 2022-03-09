@@ -1,3 +1,4 @@
+import random
 from ..modelos.orden import Orden
 from ..listas.pizzas import Pizzas
 from ..listas.ordenes import Ordenes
@@ -23,7 +24,7 @@ class MenuOrdenes:
             
             if self.__ordenes.contar() > 0:
                 for orden in self.__ordenes:
-                    print('{}. {}'.format(orden.get_numero(), orden.get_cliente().get_nombre()))
+                    print('{}. \t{} {} minutos'.format(orden.get_numero(), orden.get_cliente().get_nombre()))
             else:
                 print('No hay pedidos.')
             
@@ -49,12 +50,19 @@ class MenuOrdenes:
         
         while salir == False:
             Consola.limpiar_consola()
+            print('-'*20 + 'DATOS ORDEN' + '-'*20)
+            print('Cliente: {}'.format(cliente.get_nombre()))
+            print('Dirección: {}'.format(cliente.get_direccion()))
+            print('NIT: {}'.format(cliente.get_NIT()))
+            print('Pizzas: {}'.format(orden.get_pizzas().contar()))
+            
             print('-'*20 + 'CREAR ORDEN' + '-'*20)
             print('{}. {}'.format(OMenuOrdenCrear.Nombre.value, OMenuOrdenCrear.Nombre.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenCrear.Direccion.value, OMenuOrdenCrear.Direccion.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenCrear.NIT.value, OMenuOrdenCrear.NIT.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenCrear.Agregar_Pizzas.value, OMenuOrdenCrear.Agregar_Pizzas.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenCrear.Eliminar_Pizzas.value, OMenuOrdenCrear.Eliminar_Pizzas.name.replace('_', ' ')))
+            print('{}. {}'.format(OMenuOrdenCrear.Guardar.value, OMenuOrdenCrear.Guardar.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenCrear.Cancelar.value, OMenuOrdenCrear.Cancelar.name.replace('_', ' ')))
             
             print('Ingrese en número de la opción que desea seleccionar:')
@@ -88,11 +96,12 @@ class MenuOrdenes:
                     
                     if orden.get_cliente() != None and orden.get_pizzas().contar() > 0:
                         salir = True
+                        orden.set_numero(random.randint(1, 1000))
                         self.__ordenes.encolar(orden)
                     
                 elif int(opcion) == int(OMenuOrdenCrear.Cancelar.value):
                     salir = True
-                    
+
     def __agregar_pizza_orden(self, orden: Orden):
         salir = False
         
@@ -101,7 +110,7 @@ class MenuOrdenes:
             contador = 0
             for pizza in self.__pizzas:
                 contador += 1
-                if orden.get_pizzas().existe(pizza):
+                if not orden.get_pizzas().existe(pizza):
                     print('{}. {}'.format(contador, pizza.get_nombre()))
                     
             print('{}. Cancelar'.format(contador + 1))

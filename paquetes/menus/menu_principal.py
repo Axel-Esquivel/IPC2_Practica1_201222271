@@ -11,11 +11,13 @@ from ..componentes.valores_predeterminados import ValoresPredeterminados
 class MenuPrincipal:
     __pizzas: Pizzas = None
     __ordenes: Ordenes = None
+    __historico: Ordenes = None
     __ingredientes: Ingredientes = None
         
     def __init__(self):
         self.__pizzas = Pizzas()
         self.__ordenes = Ordenes()
+        self.__historico = Ordenes()
         self.__ingredientes = Ingredientes()
         ValoresPredeterminados(self.__ingredientes, self.__pizzas)
     
@@ -34,6 +36,7 @@ class MenuPrincipal:
             print('{0}. {1}'.format(OMenuPrincipal.Ingredientes.value, OMenuPrincipal.Ingredientes.name.replace('_', ' ')))
             print('{0}. {1}'.format(OMenuPrincipal.Pizzas.value, OMenuPrincipal.Pizzas.name.replace('_', ' ')))
             print('{0}. {1}'.format(OMenuPrincipal.Ordenes.value, OMenuPrincipal.Ordenes.name.replace('_', ' ')))
+            print('{0}. {1}'.format(OMenuPrincipal.Historico_Ordenes.value, OMenuPrincipal.Historico_Ordenes.name.replace('_', ' ')))
             print('{0}. {1}'.format(OMenuPrincipal.Desarrollador.value, OMenuPrincipal.Desarrollador.name.replace('_', ' ')))
             print('{0}. {1}'.format(OMenuPrincipal.Salir.value, OMenuPrincipal.Salir.name.replace('_', ' ')))
             
@@ -46,7 +49,10 @@ class MenuPrincipal:
                 elif int(opcion) == int(OMenuPrincipal.Pizzas.value):
                     MenuPizzas(self.__pizzas, self.__ingredientes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Ordenes.value):
-                    MenuOrdenes(self.__ordenes, self.__pizzas).mostrar_menu()
+                    MenuOrdenes(self.__ordenes, self.__pizzas, self.__historico).mostrar_menu()
+                elif int(opcion) == int(OMenuPrincipal.Historico_Ordenes.value):
+                    
+                    pass
                 elif int(opcion) == int(OMenuPrincipal.Desarrollador.value):
                     mostar_desarrollador = True
                 elif int(opcion) == int(OMenuPrincipal.Salir.value):

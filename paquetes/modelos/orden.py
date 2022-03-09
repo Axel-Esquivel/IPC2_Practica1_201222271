@@ -49,3 +49,10 @@ class Orden:
             total += pizza.get_tiempo_preparacion()
             
         return total
+    
+    def get_total_pagar(self) -> float:
+        total = 0
+        for pizza in self.__pizzas:
+            total += pizza.get_cantidad() * pizza.get_precio()
+            
+        return total

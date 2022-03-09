@@ -35,4 +35,4 @@ class ValoresPredeterminados:
         ingredientes_piña = Ingredientes()
         ingredientes_piña.agregar(self.__ingredientes.elemento(3))
         ingredientes_piña.agregar(self.__ingredientes.elemento(4))
-        self.__pizzas.agregar(Pizza('Pepperoni', 45.00, 1, ingredientes_piña))
+        self.__pizzas.agregar(Pizza('Piña', 45.00, 1, ingredientes_piña))

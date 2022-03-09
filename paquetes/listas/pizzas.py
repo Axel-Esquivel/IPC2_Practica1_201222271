@@ -66,6 +66,17 @@ class Pizzas:
         
         if indice_recorrido == indice and self.__temporal != None:
             return self.__temporal.get_pizza()
+    
+    def existe(self, pizza: Pizza) -> bool:
+        self.__temporal = self.__puntero
         
+        existe = False
+        while self.__temporal.get_siguiente() != None:
+            self.__temporal = self.__temporal.get_siguiente()
+            
+            if self.__temporal.get_pizza() == pizza: existe = True
+        
+        return existe
+    
     def contar(self):
         return self.__conteo

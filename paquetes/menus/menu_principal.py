@@ -6,6 +6,7 @@ from ..componentes.consola import Consola
 from ..listas.ingredientes import Ingredientes
 from .menu_ingredientes import MenuIngredientes
 from ..enums.o_menu_principal import OMenuPrincipal
+from ..componentes.valores_predeterminados import ValoresPredeterminados
 
 class MenuPrincipal:
     __pizzas: Pizzas = None
@@ -16,6 +17,7 @@ class MenuPrincipal:
         self.__pizzas = Pizzas()
         self.__ordenes = Ordenes()
         self.__ingredientes = Ingredientes()
+        ValoresPredeterminados(self.__ingredientes, self.__pizzas)
     
     def mostrar_menu(self):
         salir = False

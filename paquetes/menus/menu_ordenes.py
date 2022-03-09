@@ -7,12 +7,10 @@ from ..enums.o_menu_ordenes import OMenuOrdenes
 class MenuOrdenes:
     __pizzas: Pizzas = None
     __ordenes: Ordenes = None
-    __ingredientes: Ingredientes = None
     
-    def __init__(self, ordenes: Ordenes, pizzas: Pizzas, ingredientes: Ingredientes):
+    def __init__(self, ordenes: Ordenes, pizzas: Pizzas):
         self.__pizzas = pizzas
         self.__ordenes = ordenes
-        self.__ingredientes = ingredientes
     
     def mostrar_menu(self):
         volver = False

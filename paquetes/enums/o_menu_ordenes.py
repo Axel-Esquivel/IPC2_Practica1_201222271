@@ -2,6 +2,6 @@ from enum import Enum, auto
 
 
 class OMenuOrdenes(Enum):
-    Ordenes = auto()
+    Orden_Completa = auto()
     CrearOrden = auto()
     Volver = auto()

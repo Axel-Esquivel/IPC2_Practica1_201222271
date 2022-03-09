@@ -3,5 +3,5 @@ from enum import Enum, auto
 
 class OMenuOrdenes(Enum):
     Orden_Completa = auto()
-    CrearOrden = auto()
+    Crear_Orden = auto()
     Volver = auto()

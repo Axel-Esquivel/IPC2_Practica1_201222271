@@ -24,12 +24,15 @@ class MenuOrdenes:
             
             if self.__ordenes.contar() > 0:
                 for orden in self.__ordenes:
-                    print('{}. \t{} {} minutos'.format(orden.get_numero(), orden.get_cliente().get_nombre()))
+                    print('-'*20 + 'Código: {}'.format(orden.get_numero()) + '-'*20)
+                    print('\tCliente: {}'.format(orden.get_cliente().get_nombre()))
+                    print('\tHora pedido: {}'.format(orden.get_hora_pedido()))
+                    print('\tTiempo preparación: {} minutos'.format(orden.get_tiempo_preparacion()))
             else:
                 print('No hay pedidos.')
             
             print('\n{}. {}'.format(OMenuOrdenes.Orden_Completa.value, OMenuOrdenes.Orden_Completa.name.replace('_', ' ')))
-            print('{}. {}'.format(OMenuOrdenes.CrearOrden.value, OMenuOrdenes.CrearOrden.name.replace('_', ' ')))
+            print('{}. {}'.format(OMenuOrdenes.Crear_Orden.value, OMenuOrdenes.Crear_Orden.name.replace('_', ' ')))
             print('{}. {}'.format(OMenuOrdenes.Volver.value, OMenuOrdenes.Volver.name.replace('_', ' ')))
             
             print('Ingrese el número de la opción que desea seleccionar:')
@@ -38,7 +41,7 @@ class MenuOrdenes:
             if opcion.isnumeric():
                 if int(opcion) == int(OMenuOrdenes.Orden_Completa.value):
                     self.__ordenes.desencolar()
-                if int(opcion) == int(OMenuOrdenes.CrearOrden.value):
+                if int(opcion) == int(OMenuOrdenes.Crear_Orden.value):
                     self.__crear_orden()
                 elif int(opcion) == int(OMenuOrdenes.Volver.value):
                     volver = True
@@ -97,8 +100,8 @@ class MenuOrdenes:
                     if orden.get_cliente() != None and orden.get_pizzas().contar() > 0:
                         salir = True
                         orden.set_numero(random.randint(1, 1000))
+                        orden.set_hora_pedido()
                         self.__ordenes.encolar(orden)
-                    
                 elif int(opcion) == int(OMenuOrdenCrear.Cancelar.value):
                     salir = True
 

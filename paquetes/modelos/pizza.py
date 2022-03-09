@@ -42,3 +42,5 @@ class Pizza:
         self.__tiempo_preparacion = 0
         for ingrediente in self.__ingredientes:
             self.__tiempo_preparacion += ingrediente.get_tiempo_preparacion()
+            
+        return self.__tiempo_preparacion

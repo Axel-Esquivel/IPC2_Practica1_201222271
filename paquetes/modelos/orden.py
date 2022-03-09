@@ -42,3 +42,10 @@ class Orden:
     
     def get_hora_entrega(self) -> datetime:
         return self.__hora_entrega
+    
+    def get_tiempo_preparacion(self) -> int:
+        total = 0
+        for pizza in self.__pizzas:
+            total += pizza.get_tiempo_preparacion()
+            
+        return total

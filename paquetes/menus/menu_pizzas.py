@@ -174,6 +174,7 @@ class MenuPizzas:
         ingredientes_pizza = pizza.get_ingredientes()
         
         while salir == False:
+            Consola.limpiar_consola()
             print('-'*20 + 'AGREGAR INGREDIENTE A PIZZA' + '-'*20)
             contador = 0
             for ingrediente in self.__ingredientes:
@@ -197,6 +198,7 @@ class MenuPizzas:
         pizza = self.__pizzas.elemento(indice_pizza - 1)
         
         while salir == False:
+            Consola.limpiar_consola()
             print('-'*20 + 'ELIMINAR INGREDIENTE A PIZZA' + '-'*20)
             contador = 0
             for ingrediente in pizza.get_ingredientes():

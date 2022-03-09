@@ -27,9 +27,10 @@ class MenuOrdenes:
             if self.__ordenes.contar() > 0:
                 for orden in self.__ordenes:
                     print('-'*20 + 'Código: {}'.format(orden.get_numero()) + '-'*20)
-                    print('\tCliente: {}'.format(orden.get_cliente().get_nombre()))
-                    print('\tHora pedido: {}'.format(orden.get_hora_pedido()))
-                    print('\tTiempo preparación: {} minutos'.format(orden.get_tiempo_preparacion()))
+                    print('Cliente: {}'.format(orden.get_cliente().get_nombre()))
+                    print('Pizzas: {}'.format(orden.get_pizzas().contar()))
+                    print('Pedido: {}'.format(orden.get_hora_pedido()))
+                    print('Tiempo preparación: {} minutos'.format(orden.get_tiempo_preparacion()))
             else:
                 print('No hay pedidos.')
             
@@ -42,9 +43,9 @@ class MenuOrdenes:
             
             if opcion.isnumeric():
                 if int(opcion) == int(OMenuOrdenes.Orden_Completa.value):
-                    orden = self.__ordenes.desencolar()
-                    orden.set_hora_entrega()
-                    self.__historico.encolar(orden)
+                    orden_desencolada = self.__ordenes.desencolar()
+                    orden_desencolada.set_hora_entrega()
+                    self.__historico.encolar(orden_desencolada)
                 if int(opcion) == int(OMenuOrdenes.Crear_Orden.value):
                     self.__crear_orden()
                 elif int(opcion) == int(OMenuOrdenes.Volver.value):
@@ -131,7 +132,7 @@ class MenuOrdenes:
                     Consola.limpiar_consola()
                     pizza = self.__pizzas.elemento(int(opcion) - 1)
                     print('Ingrese la cantidad de pizzas que desea agregar:')
-                    cantidad = input
+                    cantidad = input()
                     
                     if cantidad != '': pizza.set_cantidad(cantidad)
                     

@@ -1,3 +1,5 @@
+import datetime
+from ..modelos.orden import Orden
 from ..listas.pizzas import Pizzas
 from .menu_pizzas import MenuPizzas
 from ..listas.ordenes import Ordenes
@@ -11,13 +13,13 @@ from ..componentes.valores_predeterminados import ValoresPredeterminados
 class MenuPrincipal:
     __pizzas: Pizzas = None
     __ordenes: Ordenes = None
-    __historico: Ordenes = None
+    __historico_ordenes: Ordenes = None
     __ingredientes: Ingredientes = None
         
     def __init__(self):
         self.__pizzas = Pizzas()
         self.__ordenes = Ordenes()
-        self.__historico = Ordenes()
+        self.__historico_ordenes = Ordenes()
         self.__ingredientes = Ingredientes()
         ValoresPredeterminados(self.__ingredientes, self.__pizzas)
     
@@ -49,11 +51,28 @@ class MenuPrincipal:
                 elif int(opcion) == int(OMenuPrincipal.Pizzas.value):
                     MenuPizzas(self.__pizzas, self.__ingredientes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Ordenes.value):
-                    MenuOrdenes(self.__ordenes, self.__pizzas, self.__historico).mostrar_menu()
+                    MenuOrdenes(self.__ordenes, self.__pizzas, self.__historico_ordenes).mostrar_menu()
                 elif int(opcion) == int(OMenuPrincipal.Historico_Ordenes.value):
-                    
-                    pass
+                    self.__mostrar_historico()
                 elif int(opcion) == int(OMenuPrincipal.Desarrollador.value):
                     mostar_desarrollador = True
                 elif int(opcion) == int(OMenuPrincipal.Salir.value):
                     salir = True
+                    
+    def __mostrar_historico(self):
+        Consola.limpiar_consola()
+        print('-'*20 + 'HISTORICO DE ORDENES' + '-'*20)
+        
+        orden: Orden
+        for orden in self.__historico_ordenes:
+            delta_tiempo = (orden.get_hora_entrega() - orden.get_hora_pedido()) + datetime.timedelta(minutes = orden.get_tiempo_preparacion())
+            print('-'*20 + 'Código {}'.format(orden.get_numero()) + '-'*20)
+            print('Cliente: {}'.format(orden.get_cliente().get_nombre()))
+            print('Pizzas: {}'.format(orden.get_pizzas().contar()))
+            print('Pedido: {}'.format(orden.get_hora_pedido().strftime('%H:%M:%S')))
+            print('Entregado: {}'.format(orden.get_hora_entrega().strftime('%H:%M:%S')))
+            print('Tiempo preparación: {} minutos'.format(orden.get_tiempo_preparacion()))
+            print('Tiempo total: {}'.format(delta_tiempo))
+        
+        print('\nPresione la tecla Enter para volver')
+        input()

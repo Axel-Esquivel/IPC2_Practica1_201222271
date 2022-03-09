@@ -45,7 +45,9 @@ class Ordenes:
         
         if indice_recorrido == indice and self.__temporal.get_siguiente() != None:
             self.__conteo -= 1
-            return self.__temporal.set_siguiente(self.__temporal.get_siguiente().get_siguiente())
+            eliminado: NodoOrden = self.__temporal.get_siguiente()
+            self.__temporal.set_siguiente(eliminado.get_siguiente())
+            return eliminado.get_orden()
     
     def eliminar_elemento(self, orden: Orden) -> Orden:
         self.__temporal = self.__puntero

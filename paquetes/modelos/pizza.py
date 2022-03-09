@@ -4,6 +4,7 @@ class Pizza:
     __nombre: str = None
     __precio: float = None
     __cantidad: int = None
+    __tiempo_preparacion: int = None
     __ingredientes: Ingredientes = None
     
     def __init__(self, nombre: str = None, precio: float = None, cantidad: int = None, ingredientes: Ingredientes = None):
@@ -36,3 +37,8 @@ class Pizza:
     
     def get_ingredientes(self) -> Ingredientes:
         return self.__ingredientes
+    
+    def get_tiempo_preparacion(self) -> int:
+        self.__tiempo_preparacion = 0
+        for ingrediente in self.__ingredientes:
+            self.__tiempo_preparacion += ingrediente.get_tiempo_preparacion()

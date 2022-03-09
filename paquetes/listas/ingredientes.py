@@ -64,5 +64,18 @@ class Ingredientes:
         if indice_recorrido == indice and self.__temporal != None:
             return self.__temporal.get_ingrediente()
     
+    def existe(self, ingrediente: Ingrediente) -> bool:
+        self.__temporal = self.__puntero
+        
+        existe = False
+        while self.__temporal.get_siguiente() != None:
+            if self.__temporal.get_ingrediente() == ingrediente: existe = True
+            
+            self.__temporal = self.__temporal.get_siguiente()
+        
+        
+        
+        return existe
+    
     def contar(self) -> int:
         return self.__conteo

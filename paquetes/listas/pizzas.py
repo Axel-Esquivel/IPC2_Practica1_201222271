@@ -77,6 +77,6 @@ class Pizzas:
             if self.__temporal.get_pizza() == pizza: existe = True
         
         return existe
-    
+        
     def contar(self):
         return self.__conteo

@@ -67,8 +67,13 @@ class MenuPrincipal:
         for orden in self.__historico_ordenes:
             delta_tiempo = (orden.get_hora_entrega() - orden.get_hora_pedido()) + datetime.timedelta(minutes = orden.get_tiempo_preparacion())
             print('-'*20 + 'Código {}'.format(orden.get_numero()) + '-'*20)
+            
             print('Cliente: {}'.format(orden.get_cliente().get_nombre()))
-            print('Pizzas: {}'.format(orden.get_pizzas().contar()))
+            print('Pizzas: {}'.format(orden.get_total_pizzas()))
+            for pizza in orden.get_pizzas():
+                print('  Pizza: {} de {} - {} min'.format(pizza.get_cantidad() ,pizza.get_nombre(), pizza.get_tiempo_preparacion()))
+                for ingrediente in pizza.get_ingredientes():
+                    print('    Ingredinete: {} - {} min'.format(ingrediente.get_nombre(), ingrediente.get_tiempo_preparacion()))
             print('Pedido: {}'.format(orden.get_hora_pedido().strftime('%H:%M:%S')))
             print('Entregado: {}'.format(orden.get_hora_entrega().strftime('%H:%M:%S')))
             print('Tiempo preparación: {} minutos'.format(orden.get_tiempo_preparacion()))

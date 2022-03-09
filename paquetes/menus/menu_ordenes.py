@@ -1,5 +1,6 @@
 from ..listas.pizzas import Pizzas
 from ..listas.ordenes import Ordenes
+from ..componentes.consola import Consola
 from ..listas.ingredientes import Ingredientes
 
 class MenuOrdenes:
@@ -14,3 +15,8 @@ class MenuOrdenes:
     
     def mostrar_menu(self):
         volver = False
+        
+        while volver == False:
+            Consola.limpiar_consola()
+            print('-'*20 + 'MENU ORDENES'  + + '-'*20)
+            

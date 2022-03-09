@@ -9,10 +9,7 @@ class Orden:
     __cliente: Cliente = None
     __hora_pedido: datetime = None
     __hora_entrega: datetime = None
-    
-    def __init__(self):
-        self.__cliente = Cliente()
-    
+        
     def set_numero(self, numero: int):
         self.__numero = numero
         

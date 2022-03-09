@@ -31,11 +31,11 @@ class Ingredientes:
     def eliminar_indice(self, indice: int) -> Ingrediente:
         self.__temporal = self.__puntero
         
-        indice_recorrido = -1
+        indice_recorrido = 0
         while indice_recorrido != indice:
-            indice_recorrido += 1
             if self.__temporal.get_siguiente() != None:
                 self.__temporal = self.__temporal.get_siguiente()
+            indice_recorrido += 1
         
         if indice_recorrido == indice and self.__temporal.get_siguiente() != None:
             self.__conteo -= 1

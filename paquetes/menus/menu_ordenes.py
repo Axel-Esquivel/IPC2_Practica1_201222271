@@ -1,4 +1,7 @@
+import os
 import random
+import datetime
+from graphviz import Source
 from ..modelos.orden import Orden
 from ..listas.pizzas import Pizzas
 from ..listas.ordenes import Ordenes
@@ -50,8 +53,10 @@ class MenuOrdenes:
                     orden_desencolada = self.__ordenes.desencolar()
                     orden_desencolada.set_hora_entrega()
                     self.__historico.encolar(orden_desencolada)
+                    self.__procesar_graphviz()
                 if int(opcion) == int(OMenuOrdenes.Crear_Orden.value):
                     self.__crear_orden()
+                    self.__procesar_graphviz()
                 elif int(opcion) == int(OMenuOrdenes.Volver.value):
                     volver = True
     
@@ -165,3 +170,46 @@ class MenuOrdenes:
                     orden.get_pizzas().eliminar_indice(int(opcion) - 1)
                 elif int(opcion) == contador + 1:
                     salir = True
+                    
+    def __procesar_graphviz(self):
+        ruta_archivos = os.path.dirname(os.path.abspath(__file__)).replace("paquetes\menus", "archivos")
+        
+        texto = '\n}'
+        texto = self.__orden_texto(self.__ordenes) + texto
+        texto = '\n' + self.__orden_texto(self.__historico) + texto
+        texto = 'digraph G {\n' + texto
+        
+        ruta = '{}\\{}.dot'.format(ruta_archivos, 'cola')
+        src = Source(texto)
+        src.render(directory = ruta, view = True).replace('\\', '/')
+        
+    def __orden_texto(self, ordenes: Ordenes) -> str:
+        texto = ''
+        anterior = ''
+        for orden in ordenes:
+            if orden.get_hora_entrega() != None:
+                tiempo_total = (orden.get_hora_entrega() - orden.get_hora_pedido()) + datetime.timedelta(minutes = orden.get_tiempo_preparacion())
+                actual = '"Orden: {}\nCliente: {}\nPizzas: {}\nPago: Q.{}\nPedido: {}\nEntrega: {}\nPreparación: {} min\nTiempo Total: {}"'.format(orden.get_numero(),
+                                                                                                                                             orden.get_cliente().get_nombre(),
+                                                                                                                                             orden.get_total_pizzas(),
+                                                                                                                                             orden.get_total_pagar(),
+                                                                                                                                             orden.get_hora_pedido().strftime('%H:%M:%S'),
+                                                                                                                                             orden.get_hora_entrega().strftime('%H:%M:%S'),
+                                                                                                                                             orden.get_tiempo_preparacion(),
+                                                                                                                                             tiempo_total)
+            else:
+                actual = '"Orden: {}\nCliente: {}\nPizzas: {}\nPago: Q.{}\nPedido: {}\nEntrega: En cola\nPreparación: {} min\nTiempo Total: En cola"'.format(orden.get_numero(),
+                                                                                                                                                       orden.get_cliente().get_nombre(),
+                                                                                                                                                       orden.get_total_pizzas(),
+                                                                                                                                                       orden.get_total_pagar(),
+                                                                                                                                                       orden.get_hora_pedido().strftime('%H:%M:%S'),
+                                                                                                                                                       orden.get_tiempo_preparacion())
+
+            if anterior != '':
+                texto = '\n  {} -> {}  [dir=back]'.format(anterior, actual) + texto
+                anterior = actual
+            if anterior == '':
+                texto = '{}'.format(actual) + texto
+                anterior = actual
+                
+        return texto

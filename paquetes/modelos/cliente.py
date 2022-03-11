@@ -3,6 +3,10 @@ class Cliente:
     __direccion: str = None
     __NIT: str = None
     
+    def __init__(self):
+        self.set_direccion('Ciudad')
+        self.set_NIT('CF')
+    
     def set_nombre(self, nombre: str):
         self.__nombre = nombre
         
